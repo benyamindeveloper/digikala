@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+    
+         <!-- Header-->
+         <header class="bg-dark py-5">
+          <div class="container px-4 px-lg-5 my-5">
+              <div class="text-center text-white">
+                  <h1 class="display-4 fw-bolder">Shop in style</h1>
+                  <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+              </div>
+          </div>
+      </header>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <center>
+                <div class="col-10">
+                  <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                  
+                    <div class="mb-3">
+                      <label for="id_username" class="form-label">Username</label>
+                      <input type="text" name="username" class="form-control" id="id_username" required>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="id_password" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="id_password" required>
+                    </div>
+                  
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" name="remember_me" class="form-check-input" id="id_remember_me">
+                      <label class="form-check-label" for="id_remember_me">Remember me</label>
+                    </div>
+                  
+                    <button type="submit" class="btn btn-primary">Enter</button>
+                  </form>
+                  
+                      
+                </div>
+            </center>
+        </div>
+    </div>
+{%endblock content %}

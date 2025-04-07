@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+    
+         <!-- Header-->
+         <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">signup</h1>
+                    {% comment %} <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p> {% endcomment %}
+                </div>
+            </div>
+        </header>
+
+
+
+
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <center>
+                <div class="col-10">
+                    <form method="POST"  action={% url "signup" %}>
+                        {% csrf_token %}
+                        
+                        <div class="mt-5 mb-5">
+                            {{form.as_p}}
+                        </div>
+                      
+                        <button type="submit" class="btn btn-primary">Enter</button>
+                      </form>
+                      
+                </div>
+            </center>
+        </div>
+    </div>
+{%endblock content %}
