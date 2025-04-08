@@ -10,11 +10,13 @@ from .forms import SignUpForm
 def home(request):
     all_products = Product.objects.all()
     all_categories = Category.objects.all()
-
-    return render(request, 'index.html', {
+    
+    content = {
         'products': all_products,
         'categories': all_categories,
-    })
+    }
+
+    return render(request, 'index.html', content)
 
 
 def about(request):
@@ -65,3 +67,14 @@ def signup_user(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+
+
+def product(request,pk):
+    product = Product.objects.get(id=pk)
+    
+    content = {
+      'product': product
+    }
+
+    return render(request, 'product.html', content)

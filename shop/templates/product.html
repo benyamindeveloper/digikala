@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+    
+
+    <div class="container mt-5 mb-5">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.name}}</h5>
+                  <p class="card-text">{{product.description}}</p>
+                  {% if product.is_sale %}    
+                    <!-- Product price-->
+                    <P><strike>{{product.sale_price | intcomma}}$</strike> - {{product.sale_price | intcomma}}$</P>
+                  {% else %}
+                  <!-- Product price-->
+                   <P>{{product.price | intcomma}}$</p>
+            {% endif %}
+
+            <a href="{% url 'home' %}"> Go back home</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+{%endblock content %}
