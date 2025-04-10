@@ -1,3 +1,4 @@
+import sys
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -71,10 +72,31 @@ def signup_user(request):
 
 
 def product(request,pk):
-    product = Product.objects.get(id=pk)
+    products = Product.objects.get(id=pk)
     
     content = {
-      'product': product
+      'products': products
     }
 
     return render(request, 'product.html', content)
+
+
+def category(request, cat):
+    cat = cat.replace("-", " ")
+
+    try:
+        category = Category.objects.get(name=cat)
+        products = Product.objects.filter(category=category)
+        content = {
+            'products': products,
+            'category': category
+        }
+        return render(request, 'category.html', content)
+
+    except Category.DoesNotExist:
+        messages.success(request, 'There is not this category.')
+        return redirect("home")
+       
+
+    
+    
